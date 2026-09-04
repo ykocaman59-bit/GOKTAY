@@ -12,11 +12,14 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v4
 
-    - name: Setup MozillaBuild
+    - name: Install MozillaBuild
+      shell: powershell
       run: |
-        echo "MozillaBuild ortami kuruluyor..."
+        Invoke-WebRequest -Uri "https://ftp.mozilla.org/pub/mozilla/libraries/win32/MozillaBuildSetup-4.0.2.exe" -OutFile "MozillaBuildSetup.exe"
+        Start-Process -FilePath ".\MozillaBuildSetup.exe" -ArgumentList "/S" -Wait
 
     - name: Run Mach Build
+      shell: cmd
       run: |
-        ./mach build
+        call C:\mozilla-build\start-shell.cmd ./mach build
         
