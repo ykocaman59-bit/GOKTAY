@@ -1,0 +1,22 @@
+name: Build Goktay Browser
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup MozillaBuild
+      run: |
+        echo "MozillaBuild ortami kuruluyor..."
+
+    - name: Run Mach Build
+      run: |
+        ./mach build
+        
