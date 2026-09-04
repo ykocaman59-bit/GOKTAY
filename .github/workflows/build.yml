@@ -16,10 +16,10 @@ jobs:
       shell: powershell
       run: |
         Invoke-WebRequest -Uri "https://ftp.mozilla.org/pub/mozilla/libraries/win32/MozillaBuildSetup-4.0.2.exe" -OutFile "MozillaBuildSetup.exe"
-        Start-Process -FilePath ".\MozillaBuildSetup.exe" -ArgumentList "/S" -Wait
+        Start-Process -FilePath ".\MozillaBuildSetup.exe" -ArgumentList "/S /D=C:\mozilla-build" -Wait
 
     - name: Run Mach Build
       shell: cmd
       run: |
-        call C:\mozilla-build\start-shell.cmd ./mach build
+        C:\mozilla-build\start-shell.bat -m -c "./mach build"
         
