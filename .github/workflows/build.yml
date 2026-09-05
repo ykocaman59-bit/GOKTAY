@@ -37,11 +37,11 @@ jobs:
       run: |
         ./mach --no-interactive bootstrap --application-choice=mobile_android
         ./mach build
-        ./mach gradle app:assembleFenixNightly
+        ./mach package
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
       with:
         name: Goktay-Browser-Android-APK
-        path: "obj-android/gradle/build/mobile/android/app/outputs/apk/fenix/nightly/*.apk"
+        path: "**/*.apk"
         
