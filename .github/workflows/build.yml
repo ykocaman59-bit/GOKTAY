@@ -31,7 +31,11 @@ jobs:
     - name: Install Dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y build-essential python3 python3-pip curl git sccache unzip zip
+        sudo apt-get install -y build-essential python3 python3-pip curl git sccache unzip zip wget
+
+    - name: Clean Corrupted Downloads
+      run: |
+        rm -rf ~/.mozbuild/mozboot/*.zip
 
     - name: Create Android Mozconfig
       run: |
