@@ -26,5 +26,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Goktay-Browser-Linux
-        path: obj-x86_64-pc-linux-gnu/dist/*.tar.bz2
+        path: obj-x86_64-pc-linux-gnu/dist/firefox-*.tar.xz
         
