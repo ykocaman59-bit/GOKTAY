@@ -21,5 +21,5 @@ jobs:
     - name: Run Mach Build
       shell: cmd
       run: |
-        C:\mozilla-build\start-shell.bat -m -c "cd /d \"%GITHUB_WORKSPACE%\" && ./mach build"
+        C:\mozilla-build\start-shell.bat -m -c "cd '$GITHUB_WORKSPACE' && ./mach build"
         
