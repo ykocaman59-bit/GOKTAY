@@ -19,7 +19,8 @@ jobs:
         Start-Process -FilePath ".\MozillaBuildSetup.exe" -ArgumentList "/S /D=C:\mozilla-build" -Wait
 
     - name: Run Mach Build
-      shell: cmd
+      shell: powershell
       run: |
-        C:\mozilla-build\start-shell.bat -m -c "cd '$GITHUB_WORKSPACE' && ./mach build"
+        $env:MOZILLABUILD = "C:\mozilla-build\"
+        & "C:\mozilla-build\start-shell.bat" -m -c "./mach build"
         
