@@ -33,15 +33,16 @@ jobs:
         echo 'ac_add_options --with-ccache=sccache' >> .mozconfig
         echo 'mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj-android' >> .mozconfig
 
-    - name: Bootstrap and Build APK
+    - name: Bootstrap and Build Fenix APK
       run: |
         ./mach --no-interactive bootstrap --application-choice=mobile_android
         ./mach build
-        ./mach package
+        cd mobile/android/fenix
+        ../../../gradlew assembleFenixNightly
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
       with:
         name: Goktay-Browser-Android-APK
-        path: "**/*.apk"
+        path: "mobile/android/fenix/app/build/outputs/apk/fenix/nightly/*.apk"
         
