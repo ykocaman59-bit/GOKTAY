@@ -24,6 +24,7 @@ jobs:
           git
           patch
           make
+          python3
 
     - name: Run Mach Build
       run: |
