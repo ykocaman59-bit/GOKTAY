@@ -8,19 +8,24 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
 
-    - name: Install MozillaBuild
-      shell: powershell
-      run: |
-        Invoke-WebRequest -Uri "https://ftp.mozilla.org/pub/mozilla/libraries/win32/MozillaBuildSetup-4.0.2.exe" -OutFile "MozillaBuildSetup.exe"
-        Start-Process -FilePath ".\MozillaBuildSetup.exe" -ArgumentList "/S /D=C:\mozilla-build" -Wait
+    - name: Setup MSYS2
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: MINGW64
+        update: true
+        install: >-
+          git
+          patch
+          make
 
     - name: Run Mach Build
-      shell: powershell
       run: |
-        $env:MOZILLABUILD = "C:\mozilla-build\"
-        & "C:\mozilla-build\start-shell.bat" -m -c "./mach build"
+        ./mach build
         
