@@ -25,7 +25,7 @@ jobs:
 
     - name: Bootstrap Android Environment
       run: |
-        ./mach bootstrap --application-choice=mobile_android --no-interactive
+        ./mach bootstrap --application-choice=mobile_android --non-interactive
 
     - name: Create Android Mozconfig
       run: |
