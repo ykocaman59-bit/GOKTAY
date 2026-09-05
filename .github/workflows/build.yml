@@ -20,4 +20,11 @@ jobs:
     - name: Run Mach Build
       run: |
         ./mach build
+        ./mach package
+
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Goktay-Browser-Linux
+        path: obj-x86_64-pc-linux-gnu/dist/*.tar.bz2
         
