@@ -1,4 +1,4 @@
-Name: Build Goktay Browser Android
+name: Build Goktay Browser Android
 
 on:
   push:
