@@ -2,6 +2,9 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="app_name_release" translatable="false">Göktay</string>
+<string name="app_name">Göktay</string>
+  
     <!-- App name for private browsing mode. %s is the name of the app (for example "Firefox"). -->
     <string name="app_name_private_5">Private %s</string>
     <!-- App name for private browsing mode. %s is the name of the app (for example "Firefox"). -->
